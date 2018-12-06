@@ -28,5 +28,5 @@ dir_full <- function(...)
 #' 
 dir_full_recursive_xml <- function(root) 
 {
-  kwb.file::dir_full(root, "[.]xml$", recursive = TRUE, ignore.case = TRUE)
+  dir_full(root, "[.]xml$", recursive = TRUE, ignore.case = TRUE)
 }
