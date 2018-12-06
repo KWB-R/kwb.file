@@ -47,24 +47,6 @@ copy_files_to_target_dir <- function(from_paths, target_dir, target_files)
   }
 }
 
-# dir_full ---------------------------------------------------------------------
-#
-#' Helper function to return full paths
-#' 
-#' This function provides a shortcut to \code{dir(..., full.names = TRUE)}
-#' 
-#' @param \dots arguments passed to \code{\link{dir}}
-#' 
-#' @export
-#' 
-#' @examples 
-#' dir_full(system.file(package = "kwb.file"))
-#' 
-dir_full <- function(...)
-{
-  dir(..., full.names = TRUE)
-}
-
 # get_download_dir -------------------------------------------------------------
 
 #' Get Default Download Directory
