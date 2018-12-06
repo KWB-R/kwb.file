@@ -45,5 +45,11 @@ kwb.pkgbuild::use_pkg(
   stage = "experimental"
 )
 
+usethis::use_r("function")
+
+pkg_dependencies <- c("digest", "kwb.fakin", "kwb.utils", "yaml")
+
+sapply(pkg_dependencies, usethis::use_package)
+
 # And now, let's do the first commit and upload everything to GitHub
 # (manually)...
