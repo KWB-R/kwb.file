@@ -1,0 +1,23 @@
+Package: kwb.file
+Title: Functions Related to File and Path Operations
+Version: 0.1.0.9000
+Authors@R: 
+    c(person(given = "Hauke",
+             family = "Sonnenberg",
+             role = c("aut", "cre"),
+             email = "hauke.sonnenberg@kompetenz-wasser.de",
+             comment = c(ORCID = "0000-0001-9134-2871")),
+      person(given = "Kompetenzzentrum Wasser Berlin gGmbH (KWB)",
+             role = "cph"))
+Description: This package provides helper functions that
+    have been developed during different research projects at KWB. The
+    functions are dealing with file operations and handling file and
+    folder paths. Let's see what we have in different scripts and other
+    packages and better fits here...
+License: MIT + file LICENSE
+URL: https://github.com/KWB-R/kwb.file
+BugReports: https://github.com/KWB-R/kwb.file/issues
+Encoding: UTF-8
+LazyData: true
+Suggests: 
+    covr

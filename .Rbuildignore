@@ -1,0 +1,11 @@
+^codecov\.yml$
+^docs$
+^_pkgdown\.yml$
+^LICENSE\.md$
+^kwb\.Rproj$
+^\.Rproj\.user$
+^.gitlab-ci\.yml$
+^.travis\.yml$
+^appveyor\.yml$
+^index\.Rmd$
+^README\.md$
