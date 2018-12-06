@@ -21,8 +21,8 @@ depending on \code{out_class}, either a data frame with the following
   columns or a list with the following elements is returned: 
   \describe{
     \item{file_id}{clean file name given to the original file for simpler
-      access}
-    \item{original_name}{original file name given by data provider}
+      access,}
+    \item{original_name}{original file name given by data provider,}
     \item{original_folder}{original path to folder in which file was
       provided.}
   }
