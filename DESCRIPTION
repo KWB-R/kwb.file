@@ -27,3 +27,6 @@ Imports:
     kwb.utils,
     yaml,
     digest
+Remotes: 
+    github::kwb-r/kwb.fakin,
+    github::kwb-r/kwb.utils
