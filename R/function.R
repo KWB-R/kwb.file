@@ -1,3 +1,89 @@
+# copy_files_to_target_dir -----------------------------------------------------
+
+#' Copy Files to Flat Structure
+#' 
+#' Calls \code{file.copy} under the hood but gives a message about the indices
+#' and paths of the files that could not be copied.
+#' 
+#' @param from_paths paths to the files to be copied
+#' @param target_dir path to the target directory
+#' @param target_files relative paths to the target files, relative to
+#'   \code{target_dir}
+#' @export
+#' 
+#' @examples 
+#' root <- system.file(package = "kwb.file")
+#' 
+#' relative_paths <- dir(root, recursive = TRUE)
+#' 
+#' # The original files are in root or in different subfolders
+#' relative_paths
+#' 
+#' # Create a temporary target folder
+#' target_dir <- kwb.utils::createDirectory(file.path(tempdir(), "target"))
+#' 
+#' # Copy all files into one target folder without subfolders
+#' from_paths <- file.path(root, relative_paths)
+#' copy_files_to_target_dir(from_paths, target_dir, basename(from_paths))
+#' 
+#' # Look at the result
+#' dir(target_dir, recursive = TRUE)
+#' 
+copy_files_to_target_dir <- function(from_paths, target_dir, target_files)
+{
+  to_paths <- file.path(target_dir, target_files)
+  
+  success <- file.copy(from = from_paths, to = to_paths)
+  
+  if (! all(success)) {
+    
+    message(
+      sprintf(
+        "\n*** Could not copy these files (indices %s):\n\n- ", 
+        kwb.utils::collapsed(which(! success), ",")
+      ),
+      kwb.utils::collapsed(from_paths[! success], "\n- ")
+    )
+  }
+}
+
+# dir_full ---------------------------------------------------------------------
+#
+#' Helper function to return full paths
+#' 
+#' This function provides a shortcut to \code{dir(..., full.names = TRUE)}
+#' 
+#' @param \dots arguments passed to \code{\link{dir}}
+#' 
+#' @export
+#' 
+#' @examples 
+#' dir_full(system.file(package = "kwb.file"))
+#' 
+dir_full <- function(...)
+{
+  dir(..., full.names = TRUE)
+}
+
+# get_download_dir -------------------------------------------------------------
+
+#' Get Default Download Directory
+#' 
+#' @return assumed default download directory on the user's computer (vector of
+#'   character of length one)
+#'   
+#' @export
+#' 
+#' @examples
+#' dir_full(get_download_dir())
+#' 
+get_download_dir <- function()
+{
+  download_dirs <- list(windows = "~/../Downloads", unix = "~/Downloads")
+  
+  kwb.utils::selectElements(download_dirs, .Platform$OS.type)
+}
+
 # to_simple_names --------------------------------------------------------------
 
 #' Convert Long File Paths to Simple Paths
@@ -68,89 +154,4 @@ to_simple_names <- function(
   stopifnot(! any(duplicated(simple_names)))
   
   simple_names
-}
-
-# copy_files_to_target_dir -----------------------------------------------------
-
-#' Copy Files to Flat Structure
-#' 
-#' Calls \code{file.copy} under the hood but gives a message about the indices
-#' and paths of the files that could not be copied.
-#' 
-#' @param from_paths paths to the files to be copied
-#' @param target_dir path to the target directory
-#' @param target_files relative paths to the target files, relative to
-#'   \code{target_dir}
-#' @export
-#' 
-#' @examples 
-#' root <- system.file(package = "kwb.file")
-#' 
-#' relative_paths <- dir(root, recursive = TRUE)
-#' 
-#' # The original files are in root or in different subfolders
-#' relative_paths
-#' 
-#' # Create a temporary target folder
-#' target_dir <- kwb.utils::createDirectory(file.path(tempdir(), "target"))
-#' 
-#' # Copy all files into one target folder without subfolders
-#' from_paths <- file.path(root, relative_paths)
-#' copy_files_to_target_dir(from_paths, target_dir, basename(from_paths))
-#' 
-#' # Look at the result
-#' dir(target_dir, recursive = TRUE)
-#' 
-copy_files_to_target_dir <- function(from_paths, target_dir, target_files)
-{
-  to_paths <- file.path(target_dir, target_files)
-  
-  success <- file.copy(from = from_paths, to = to_paths)
-  
-  if (! all(success)) {
-    
-    message(
-      sprintf(
-        "\n*** Could not copy these files (indices %s):\n\n- ", 
-        kwb.utils::collapsed(which(! success), ",")
-      ),
-      kwb.utils::collapsed(from_paths[! success], "\n- ")
-    )
-  }
-}
-
-# write_file_info_to_yaml_file -------------------------------------------------
-write_file_info_to_yaml_file <- function(source_paths, target_files, target_dir)
-{
-  file_info <- file_paths_to_file_info(file_paths = source_paths, target_files)
-  
-  writeLines(file_info_to_yaml(file_info), file.path(target_dir, "FILES.yaml"))
-}
-
-# file_paths_to_file_info ------------------------------------------------------
-file_paths_to_file_info <- function(file_paths, target_files)
-{
-  path_parts <- kwb.fakin:::splitPaths(file_paths)
-  
-  path_parts <- kwb.fakin::removeCommonRoot(path_parts, n_keep = 1)
-  
-  directory_path <- function(x) do.call(file.path, as.list(x[-length(x)]))
-  
-  kwb.utils::noFactorDataFrame(
-    file_id = target_files,
-    original_name = sapply(path_parts, kwb.utils::lastElement),
-    original_folder = sapply(path_parts, directory_path)
-  )
-}
-
-# file_info_to_yaml ------------------------------------------------------------
-file_info_to_yaml <- function(file_info)
-{
-  c("files:", unlist(lapply(seq_len(nrow(file_info)), function(i) {
-    
-    record <- file_info[i, ]
-    prefixes <- rep_len("  ", length(record))
-    prefixes[1] <- "- "
-    sprintf("%s %s: %s", prefixes, names(record), as.list(record))
-  })))
 }

@@ -9,7 +9,7 @@ copy_files_to_target_dir(from_paths, target_dir, target_files)
 \arguments{
 \item{from_paths}{paths to the files to be copied}
 
-\item{target_dir}{path to the target directory.}
+\item{target_dir}{path to the target directory}
 
 \item{target_files}{relative paths to the target files, relative to
 \code{target_dir}}
@@ -19,7 +19,6 @@ Calls \code{file.copy} under the hood but gives a message about the indices
 and paths of the files that could not be copied.
 }
 \examples{
-
 root <- system.file(package = "kwb.file")
 
 relative_paths <- dir(root, recursive = TRUE)
@@ -27,9 +26,11 @@ relative_paths <- dir(root, recursive = TRUE)
 # The original files are in root or in different subfolders
 relative_paths
 
+# Create a temporary target folder
+target_dir <- kwb.utils::createDirectory(file.path(tempdir(), "target"))
+
 # Copy all files into one target folder without subfolders
 from_paths <- file.path(root, relative_paths)
-target_dir <- kwb.utils::createDirectory(file.path(tempdir(), "target"))
 copy_files_to_target_dir(from_paths, target_dir, basename(from_paths))
 
 # Look at the result
