@@ -20,7 +20,8 @@ BugReports: https://github.com/KWB-R/kwb.file/issues
 Encoding: UTF-8
 LazyData: true
 Suggests: 
-    covr
+    covr,
+    testthat
 RoxygenNote: 6.1.1
 Imports: 
     kwb.fakin,

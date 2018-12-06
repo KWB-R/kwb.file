@@ -11,10 +11,10 @@
 #'   columns or a list with the following elements is returned: 
 #'   \describe{
 #'     \item{file_id}{clean file name given to the original file for simpler
-#'       access}, 
-#'     \item{original_name}{original file name given by data provider},
+#'       access}
+#'     \item{original_name}{original file name given by data provider}
 #'     \item{original_folder}{original path to folder in which file was
-#'       provided.}.
+#'       provided.}
 #'   }
 read_file_metadata <- function(
   yaml_file, file_encoding = "UTF-8", out_class = c("data.frame", "list")[1]
@@ -32,6 +32,6 @@ read_file_metadata <- function(
     
   } else {
     
-    file_info
+    root_node
   }
 }
