@@ -31,7 +31,14 @@ target_dir <- kwb.utils::createDirectory(file.path(tempdir(), "target"))
 
 # Copy all files into one target folder without subfolders
 from_paths <- file.path(root, relative_paths)
-copy_files_to_target_dir(from_paths, target_dir, basename(from_paths))
+to_paths <- basename(from_paths)
+
+# Make sure that the target file names contain no duplicates, otherwise
+# an error is raised
+to_paths <- kwb.utils::makeUnique(to_paths, warn = FALSE)
+
+# Copy the files
+copy_files_to_target_dir(from_paths, target_dir, to_paths)
 
 # Look at the result
 dir(target_dir, recursive = TRUE)

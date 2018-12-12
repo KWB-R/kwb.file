@@ -10,7 +10,8 @@
 #' @param target_files relative paths to the target files, relative to
 #'   \code{target_dir}
 #' @export
-#' 
+#' @importFrom kwb.utils stringList collapsed
+#' @importFrom utils head
 #' @examples 
 #' root <- system.file(package = "kwb.file")
 #' 
@@ -24,7 +25,14 @@
 #' 
 #' # Copy all files into one target folder without subfolders
 #' from_paths <- file.path(root, relative_paths)
-#' copy_files_to_target_dir(from_paths, target_dir, basename(from_paths))
+#' to_paths <- basename(from_paths)
+#' 
+#' # Make sure that the target file names contain no duplicates, otherwise
+#' # an error is raised
+#' to_paths <- kwb.utils::makeUnique(to_paths, warn = FALSE)
+#' 
+#' # Copy the files
+#' copy_files_to_target_dir(from_paths, target_dir, to_paths)
 #' 
 #' # Look at the result
 #' dir(target_dir, recursive = TRUE)
@@ -32,6 +40,17 @@
 copy_files_to_target_dir <- function(from_paths, target_dir, target_files)
 {
   to_paths <- file.path(target_dir, target_files)
+
+  is_duplicated <- duplicated(target_files)
+  
+  if (sum(is_duplicated)) {
+    
+    stop(
+      call. = FALSE, "The path(s) to the target file(s) must not contain ", 
+      "duplicates but they do:\n  ", 
+      kwb.utils::stringList(utils::head(target_files[is_duplicated]))
+    )
+  }
   
   success <- file.copy(from = from_paths, to = to_paths)
   
@@ -55,7 +74,7 @@ copy_files_to_target_dir <- function(from_paths, target_dir, target_files)
 #'   character of length one)
 #'   
 #' @export
-#' 
+#' @importFrom kwb.utils selectElements
 #' @examples
 #' dir_full(get_download_dir())
 #' 
@@ -87,6 +106,8 @@ get_download_dir <- function()
 #'   applied
 #' @return vector of character as long as \code{paths}
 #' @export
+#' @importFrom digest sha1
+#' @importFrom kwb.utils fileExtension removeExtension
 #' @examples
 #' paths <- c("v1_ugly_name_1.doc",  "v1_very_ugly_name.xml",
 #'            "v2_ugly_name_1.docx", "v2_very_ugly_name.xmlx")
