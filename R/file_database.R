@@ -12,6 +12,15 @@
 #'   \code{files} is removed before creating the database
 #' @return list of two data frames, \code{files} and \code{folders}
 #' @export
+#' @examples 
+#' paths <- c(
+#'   "very_long/very_ugly_path/even with spaces.doc",
+#'   "very_long/very_ugly_path/even with spaces.docx"
+#' )
+#' 
+#' to_file_database(paths)
+#' to_file_database(paths, remove_common_base = FALSE)
+#' 
 to_file_database <- function(files, remove_common_base = TRUE)
 {
   folder_table <- to_folder_table(dirname(files), remove_common_base)

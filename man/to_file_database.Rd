@@ -21,3 +21,13 @@ identifiers for files and folders. The assignements between identifiers and
 original paths are stored in two data frames, \code{files} and \code{folders}
 that are returned.
 }
+\examples{
+paths <- c(
+  "very_long/very_ugly_path/even with spaces.doc",
+  "very_long/very_ugly_path/even with spaces.docx"
+)
+
+to_file_database(paths)
+to_file_database(paths, remove_common_base = FALSE)
+
+}
