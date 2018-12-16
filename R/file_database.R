@@ -96,3 +96,50 @@ to_file_table <- function(files, lookup_table)
     )
   )
 }
+
+# add_file_info ----------------------------------------------------------------
+
+#' Add File Information From File Database
+#' 
+#' @param data data frame with column \code{file_id} containing file identifiers
+#'   and with an attribute \code{file_db} containing a "file database" as
+#'   created by \code{to_file_database}
+#' @return data frame \code{data} with additional columns \code{folder_path}
+#'   and \code{file_name}
+#' @export
+#' @examples 
+#' # Define some paths
+#' paths <- c(
+#'   "/very/long/path/very_long_file_name_1",
+#'   "/very/long/path/very_long_file_name_2",
+#'   "/very/long/path/very_long_file_name_3"
+#' )
+#' 
+#' # Create a "file database" from the paths
+#' file_db <- kwb.file::to_file_database(paths, remove_common_base = FALSE)
+#' 
+#' # Create a data frame that relates some information to the files.
+#' # Use the file identifier instead of the full name to keep the data clean
+#' (df <- kwb.utils::noFactorDataFrame(
+#'   file_id = file_db$files$file_id, 
+#'   value = seq_along(paths)
+#' ))
+#' 
+#' # Store the file database in the attribute "file_db"
+#' df <- structure(df, file_db = file_db)
+#' 
+#' # Restore the full file paths
+#' add_file_info(df)
+#' 
+add_file_info <- function(data)
+{
+  `%>%` <- dplyr::`%>%`
+  
+  file_db <- kwb.utils::getAttribute(data, "file_db")
+  
+  data %>% 
+    dplyr::left_join(file_db$files, by = "file_id") %>%
+    dplyr::left_join(file_db$folders, by = "folder_id") %>%
+    kwb.utils::removeColumns("folder_id") %>%
+    kwb.utils::moveColumnsToFront(c("file_id", "folder_path", "file_name"))
+}
