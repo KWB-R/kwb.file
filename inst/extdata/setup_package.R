@@ -47,7 +47,7 @@ kwb.pkgbuild::use_pkg(
 
 usethis::use_r("function")
 
-pkg_dependencies <- c("digest", "kwb.fakin", "kwb.utils", "yaml")
+pkg_dependencies <- c("digest", "kwb.utils", "yaml")
 
 sapply(pkg_dependencies, usethis::use_package)
 

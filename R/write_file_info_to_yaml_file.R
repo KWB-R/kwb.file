@@ -9,9 +9,9 @@ write_file_info_to_yaml_file <- function(source_paths, target_files, target_dir)
 # file_paths_to_file_info ------------------------------------------------------
 file_paths_to_file_info <- function(file_paths, target_files)
 {
-  path_parts <- kwb.fakin:::splitPaths(file_paths)
+  path_parts <- split_paths(file_paths)
   
-  path_parts <- kwb.fakin::removeCommonRoot(path_parts, n_keep = 1)
+  path_parts <- remove_common_root(path_parts, n_keep = 1)
   
   directory_path <- function(x) do.call(file.path, as.list(x[-length(x)]))
   

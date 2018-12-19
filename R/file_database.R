@@ -54,9 +54,9 @@ to_folder_table <- function(folder_paths, remove_common_base = TRUE)
 
   if (isTRUE(remove_common_base)) {
     
-    subdirs <- kwb.fakin:::splitPaths(folder_table$folder_path)
+    subdirs <- split_paths(folder_table$folder_path)
 
-    subdirs <- kwb.fakin::removeCommonRoot(subdirs)
+    subdirs <- remove_common_root(subdirs)
 
     folder_table$folder_path <- paste_path_parts(subdirs)
 
