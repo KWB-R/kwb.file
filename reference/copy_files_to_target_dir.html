@@ -29,6 +29,12 @@
 <script src="../pkgdown.js"></script>
 
 
+<!-- docsearch -->
+<script src="../docsearch.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/docsearch.js/2.6.1/docsearch.min.css" integrity="sha256-QOSRU/ra9ActyXkIBbiIB144aDBdtvXBcNc3OTNuX/Q=" crossorigin="anonymous" />
+<link href="../docsearch.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+
 
 <meta property="og:title" content="Copy Files to Flat Structure — copy_files_to_target_dir" />
 
@@ -93,6 +99,12 @@ and paths of the files that could not be copied." />
 </li>
       </ul>
       
+      <form class="navbar-form navbar-right" role="search">
+        <div class="form-group">
+          <input type="search" class="form-control" name="search-input" id="search-input" placeholder="Search..." aria-label="Search for..." autocomplete="off">
+        </div>
+      </form>
+      
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
@@ -144,7 +156,7 @@ and paths of the files that could not be copied.</p>
 <span class='co'># The original files are in root or in different subfolders</span>
 <span class='no'>relative_paths</span></div><div class='output co'>#&gt; [1] "extdata/setup_package.R"</div><div class='input'>
 <span class='co'># Create a temporary target folder</span>
-<span class='no'>target_dir</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>kwb.utils</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/kwb.utils/topics/createDirectory'>createDirectory</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/file.path'>file.path</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/tempfile'>tempdir</a></span>(), <span class='st'>"target"</span>))</div><div class='output co'>#&gt; The directory "/tmp/Rtmp8lUnMS/target" was created.</div><div class='input'>
+<span class='no'>target_dir</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>kwb.utils</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/kwb.utils/topics/createDirectory'>createDirectory</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/file.path'>file.path</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/tempfile'>tempdir</a></span>(), <span class='st'>"target"</span>))</div><div class='output co'>#&gt; The directory "/tmp/RtmpazJZXs/target" was created.</div><div class='input'>
 <span class='co'># Copy all files into one target folder without subfolders</span>
 <span class='no'>from_paths</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/file.path'>file.path</a></span>(<span class='no'>root</span>, <span class='no'>relative_paths</span>)
 <span class='no'>to_paths</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/basename'>basename</a></span>(<span class='no'>from_paths</span>)
@@ -183,6 +195,23 @@ and paths of the files that could not be copied.</p>
    </div>
 
   
+<script src="https://cdnjs.cloudflare.com/ajax/libs/docsearch.js/2.6.1/docsearch.min.js" integrity="sha256-GKvGqXDznoRYHCwKXGnuchvKSwmx9SRMrZOTh2g4Sb0=" crossorigin="anonymous"></script>
+<script>
+  docsearch({
+    
+    
+    apiKey: '7ae9c976bf355a3f9c32bd4db95a69c7',
+    indexName: 'kwb_file',
+    inputSelector: 'input#search-input.form-control',
+    transformData: function(hits) {
+      return hits.map(function (hit) {
+        hit.url = updateHitURL(hit);
+        return hit;
+      });
+    }
+  });
+</script>
+
 
   </body>
 </html>
