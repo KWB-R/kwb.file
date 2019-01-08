@@ -1,8 +1,8 @@
 language: r
 sudo: required
 cache: packages
-r_github_packages:
-- r-lib/remotes
+r_packages:
+- remotes
 matrix:
   include:
   - r: devel
