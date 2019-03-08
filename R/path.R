@@ -1,4 +1,36 @@
+# split_into_dir_and_file ------------------------------------------------------
+
+#' "Split Full Paths into Directory Path and Filename"
+#' 
+#' @param paths vector of character representing full file paths
+#' @return data frame with columns \code{directory} and \code{file}
+#' @importFrom kwb.utils lastElement noFactorDataFrame
+#' @export
+#' @examples 
+#' split_into_dir_and_file(c("path/to/file-1", "path/to/file-2"))
+split_into_dir_and_file <- function(paths)
+{
+  parts <- split_paths(paths, dbg = FALSE)
+  
+  get_dirname <- function(x) paste(x[- length(x)], collapse = "/")
+  
+  kwb.utils::noFactorDataFrame(
+    directory = sapply(parts, get_dirname), 
+    file = sapply(parts, kwb.utils::lastElement)
+  )
+}
+
 # split_paths ------------------------------------------------------------------
+
+#' Split Full Paths at Slashes into Parts
+#' 
+#' @param paths vector of character representing full file paths
+#' @param dbg if \code{TRUE} (default), a debug message is shown
+#' @importFrom kwb.utils catAndRun
+#' @export
+#' @examples
+#' segments <- split_paths(c("path/to/file-1", "path/to/file-2"))
+#' segments
 split_paths <- function(paths, dbg = TRUE)
 {
   kwb.utils::catAndRun("Splitting paths", dbg = dbg, strsplit(paths, "/"))
