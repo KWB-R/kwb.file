@@ -3,7 +3,6 @@ sudo: required
 cache: packages
 r_packages:
 - remotes
-- covr
 matrix:
   include:
   - r: devel
