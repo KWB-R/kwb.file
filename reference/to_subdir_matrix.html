@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Function reference • kwb.file</title>
+<title>Convert a Vector of Paths to a Matrix of Subfolders — to_subdir_matrix • kwb.file</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -36,7 +36,10 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
 
 
-<meta property="og:title" content="Function reference" />
+<meta property="og:title" content="Convert a Vector of Paths to a Matrix of Subfolders — to_subdir_matrix" />
+
+<meta property="og:description" content="Convert a Vector of Paths to a Matrix of Subfolders" />
+<meta name="twitter:card" content="summary" />
 
 
 
@@ -53,7 +56,7 @@
   </head>
 
   <body>
-    <div class="container template-reference-index">
+    <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -109,108 +112,71 @@
       </header>
 
 <div class="row">
-  <div class="contents col-md-9">
+  <div class="col-md-9 contents">
     <div class="page-header">
-      <h1>Reference</h1>
+    <h1>Convert a Vector of Paths to a Matrix of Subfolders</h1>
+    <small class="dont-index">Source: <a href='https://github.com/KWB-R/kwb.file/blob/master/R/to_subdir_matrix.R'><code>R/to_subdir_matrix.R</code></a></small>
+    <div class="hidden name"><code>to_subdir_matrix.Rd</code></div>
     </div>
 
-    <table class="ref-index">
+    <div class="ref-description">
+    
+    <p>Convert a Vector of Paths to a Matrix of Subfolders</p>
+    
+    </div>
 
-    <colgroup>
-      
-      <col class="alias" />
-      <col class="title" />
-    </colgroup>
-
-    <tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-all-functions" class="hasAnchor"><a href="#section-all-functions" class="anchor"></a>All functions</h2>
-          <p class="section-desc"></p>
-        </th>
-      </tr>
-      <tr>
-        
-        <td>
-          <p><code><a href="add_file_info.html">add_file_info()</a></code> </p>
-        </td>
-        <td><p>Add File Information From File Database</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="copy_files_to_target_dir.html">copy_files_to_target_dir()</a></code> </p>
-        </td>
-        <td><p>Copy Files to Flat Structure</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="dir_full.html">dir_full()</a></code> </p>
-        </td>
-        <td><p>Helper function to return full paths</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="dir_full_recursive_xml.html">dir_full_recursive_xml()</a></code> </p>
-        </td>
-        <td><p>Get Full Paths to all XML files Below a Root Folder</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="get_download_dir.html">get_download_dir()</a></code> </p>
-        </td>
-        <td><p>Get Default Download Directory</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="read_file_metadata.html">read_file_metadata()</a></code> </p>
-        </td>
-        <td><p>Read File Metadata from YAML-File</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="remove_common_root.html">remove_common_root()</a></code> </p>
-        </td>
-        <td><p>Remove the Common Root Parts</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="split_into_dir_and_file.html">split_into_dir_and_file()</a></code> </p>
-        </td>
-        <td><p>"Split Full Paths into Directory Path and Filename"</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="split_paths.html">split_paths()</a></code> </p>
-        </td>
-        <td><p>Split Full Paths at Slashes into Parts</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="to_file_database.html">to_file_database()</a></code> </p>
-        </td>
-        <td><p>Create Two Table Relational Database From Paths</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="to_simple_names.html">to_simple_names()</a></code> </p>
-        </td>
-        <td><p>Convert Long File Paths to Simple Paths</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="to_subdir_matrix.html">to_subdir_matrix()</a></code> </p>
-        </td>
-        <td><p>Convert a Vector of Paths to a Matrix of Subfolders</p></td>
-      </tr>
-    </tbody>
+    <pre class="usage"><span class='fu'>to_subdir_matrix</span>(<span class='no'>paths</span>, <span class='kw'>fill.value</span> <span class='kw'>=</span> <span class='st'>""</span>, <span class='kw'>result_type</span> <span class='kw'>=</span> <span class='st'>"matrix"</span>,
+  <span class='kw'>dbg</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
+    
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>paths</th>
+      <td><p>vector of path strings</p></td>
+    </tr>
+    <tr>
+      <th>fill.value</th>
+      <td><p>value used to fill empty cells of the result matrix</p></td>
+    </tr>
+    <tr>
+      <th>result_type</th>
+      <td><p>one of <code><a href='https://www.rdocumentation.org/packages/base/topics/c'>c("matrix", "data.frame")</a></code>, specifying the
+type of object to be returned</p></td>
+    </tr>
+    <tr>
+      <th>dbg</th>
+      <td><p>if <code>TRUE</code> debug messages are shown</p></td>
+    </tr>
     </table>
-  </div>
+    
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
+    <p>matrix or data frame, depending on <code>result_type</code></p>
+    
+
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='no'>folder_matrix</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>kwb.file</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/kwb.file/topics/to_subdir_matrix'>to_subdir_matrix</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"a1/b1/c1"</span>, <span class='st'>"a1/b2"</span>, <span class='st'>"a2"</span>))</div><div class='output co'>#&gt; Splitting paths ... ok. (0.00s) </div><div class='input'>
+<span class='no'>folder_matrix</span></div><div class='output co'>#&gt;      [,1] [,2] [,3]
+#&gt; [1,] "a1" "b1" "c1"
+#&gt; [2,] "a1" "b2" ""  
+#&gt; [3,] "a2" ""   ""  </div><div class='input'>
+<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/dim'>dim</a></span>(<span class='no'>folder_matrix</span>)</div><div class='output co'>#&gt; [1] 3 3</div><div class='input'>
+<span class='no'>folder_matrix</span>[<span class='no'>folder_matrix</span>[, <span class='fl'>1</span>] <span class='kw'>==</span> <span class='st'>"a1"</span>, ]</div><div class='output co'>#&gt;      [,1] [,2] [,3]
+#&gt; [1,] "a1" "b1" "c1"
+#&gt; [2,] "a1" "b2" ""  </div><div class='input'>
+</div></pre>
+  </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-      <li><a href="#section-all-functions">All functions</a></li>
+      <li><a href="#arguments">Arguments</a></li>
+      
+      <li><a href="#value">Value</a></li>
+      
+      <li><a href="#examples">Examples</a></li>
     </ul>
+
   </div>
 </div>
 
