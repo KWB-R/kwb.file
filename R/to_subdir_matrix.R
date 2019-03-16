@@ -24,7 +24,7 @@
 #' folder_matrix[folder_matrix[, 1] == "a1", ]
 #'
 to_subdir_matrix <- function(
-  paths, fill.value = "", result_type = "matrix", dbg = TRUE
+  paths, fill.value = "", result_type = "matrix", dbg = FALSE
 )
 {
   stopifnot(result_type %in% c("matrix", "data.frame"))
