@@ -24,17 +24,22 @@ split_into_root_folder_file_extension <- function(paths, n_root_parts = 0)
 {
   parts <- split_paths(paths)
   
-  do.call(rbind, lapply(parts, function(x) {
+  result <- do.call(rbind, lapply(parts, function(x) {
     paste_path <- function(indices) paste(x[indices], collapse = "/")
     first_indices <- seq_len(n_root_parts)
     n_parts <- length(x)
     file <- x[n_parts]
-    cbind(
+    c(
       root = paste_path(first_indices),
       folder = paste_path(- c(first_indices, n_parts)),
       file = file,
-      extension = kwb.utils::fileExtension(file),
-      depth = n_parts - n_root_parts
+      extension = kwb.utils::fileExtension(file)
     )
   }))
+  
+  kwb.utils::setColumns(
+    kwb.utils::asNoFactorDataFrame(result), 
+    depth = lengths(parts) - n_root_parts, 
+    dbg = FALSE
+  )
 }
