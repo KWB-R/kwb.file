@@ -33,7 +33,27 @@ split_into_dir_and_file <- function(paths)
 #' segments
 split_paths <- function(paths, dbg = TRUE)
 {
-  kwb.utils::catAndRun("Splitting paths", dbg = dbg, strsplit(paths, "/"))
+  # Which paths start with "//server"?
+  server_indices <- grep("^//[^/]", paths)
+  
+  # Remove // from server paths
+  if (any(server_indices)) {
+    server_paths <- paths[server_indices]
+    paths[server_indices] <- substr(server_paths, 3, nchar(server_paths))
+  }
+  
+  parts <- kwb.utils::catAndRun(
+    "Splitting paths", dbg = dbg, strsplit(paths, "/")
+  )
+  
+  # Add // back to server paths
+  if (any(server_indices)) {
+    parts[server_indices] <- lapply(parts[server_indices], function(x) {
+      `[<-`(x, 1, paste0("//", x[1]))
+    })
+  }
+
+  parts  
 }
 
 # remove_common_root -----------------------------------------------------------
