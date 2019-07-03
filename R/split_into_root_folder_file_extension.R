@@ -24,6 +24,19 @@ split_into_root_folder_file_extension <- function(paths, n_root_parts = 0)
 {
   parts <- split_paths(paths)
   
+  # All paths must be at least n_root_parts + 1 segments long
+  min_depth <- min(lengths(parts))
+  
+  if (min_depth < n_root_parts + 1) {
+    
+    message(sprintf(
+      "Setting n_root_parts to %d (was: %d) due to too few path segments", 
+      min_depth - 1, n_root_parts
+    ))
+    
+    n_root_parts <- min_depth - 1
+  }
+  
   result <- do.call(rbind, lapply(parts, function(x) {
     paste_path <- function(indices) paste(x[indices], collapse = "/")
     first_indices <- seq_len(n_root_parts)
