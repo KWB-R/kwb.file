@@ -160,23 +160,17 @@
 #&gt; 2               //always/the/same/root/project-1   logo.png       png     6
 #&gt; 3               //always/the/same/root/project-2  intro.txt       txt     6
 #&gt; 4      //always/the/same/root/project-2/planning file-1.doc       doc     7
-#&gt; 5        //always/the/same/root/project-2/result report.pdf       pdf     7</div><div class='input'><span class='fu'>split_into_root_folder_file_extension</span>(<span class='no'>paths</span>, <span class='kw'>n_root_parts</span> <span class='kw'>=</span> <span class='fl'>6</span>)</div><div class='output co'>#&gt; Splitting paths ... ok. (0.00s) </div><div class='output co'>#&gt;                                         root folder       file extension depth
-#&gt; 1 //always/the/same/root/project-1/intro.doc         intro.doc       doc     0
-#&gt; 2  //always/the/same/root/project-1/logo.png          logo.png       png     0
-#&gt; 3 //always/the/same/root/project-2/intro.txt         intro.txt       txt     0
-#&gt; 4  //always/the/same/root/project-2/planning        file-1.doc       doc     1
-#&gt; 5    //always/the/same/root/project-2/result        report.pdf       pdf     1</div><div class='input'><span class='fu'>split_into_root_folder_file_extension</span>(<span class='no'>paths</span>, <span class='kw'>n_root_parts</span> <span class='kw'>=</span> <span class='fl'>7</span>)</div><div class='output co'>#&gt; Splitting paths ... ok. (0.00s) </div><div class='output co'>#&gt;                                                   root folder       file
-#&gt; 1        //always/the/same/root/project-1/intro.doc/NA         intro.doc
-#&gt; 2         //always/the/same/root/project-1/logo.png/NA          logo.png
-#&gt; 3        //always/the/same/root/project-2/intro.txt/NA         intro.txt
-#&gt; 4 //always/the/same/root/project-2/planning/file-1.doc        file-1.doc
-#&gt; 5   //always/the/same/root/project-2/result/report.pdf        report.pdf
-#&gt;   extension depth
-#&gt; 1       doc    -1
-#&gt; 2       png    -1
-#&gt; 3       txt    -1
-#&gt; 4       doc     0
-#&gt; 5       pdf     0</div><div class='input'>
+#&gt; 5        //always/the/same/root/project-2/result report.pdf       pdf     7</div><div class='input'><span class='fu'>split_into_root_folder_file_extension</span>(<span class='no'>paths</span>, <span class='kw'>n_root_parts</span> <span class='kw'>=</span> <span class='fl'>6</span>)</div><div class='output co'>#&gt; Splitting paths ... ok. (0.00s) </div><div class='output co'>#&gt; <span class='message'>Setting n_root_parts to 5 (was: 6) due to too few path segments</span></div><div class='output co'>#&gt;                               root   folder       file extension depth
+#&gt; 1 //always/the/same/root/project-1           intro.doc       doc     1
+#&gt; 2 //always/the/same/root/project-1            logo.png       png     1
+#&gt; 3 //always/the/same/root/project-2           intro.txt       txt     1
+#&gt; 4 //always/the/same/root/project-2 planning file-1.doc       doc     2
+#&gt; 5 //always/the/same/root/project-2   result report.pdf       pdf     2</div><div class='input'><span class='fu'>split_into_root_folder_file_extension</span>(<span class='no'>paths</span>, <span class='kw'>n_root_parts</span> <span class='kw'>=</span> <span class='fl'>7</span>)</div><div class='output co'>#&gt; Splitting paths ... ok. (0.00s) </div><div class='output co'>#&gt; <span class='message'>Setting n_root_parts to 5 (was: 7) due to too few path segments</span></div><div class='output co'>#&gt;                               root   folder       file extension depth
+#&gt; 1 //always/the/same/root/project-1           intro.doc       doc     1
+#&gt; 2 //always/the/same/root/project-1            logo.png       png     1
+#&gt; 3 //always/the/same/root/project-2           intro.txt       txt     1
+#&gt; 4 //always/the/same/root/project-2 planning file-1.doc       doc     2
+#&gt; 5 //always/the/same/root/project-2   result report.pdf       pdf     2</div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
