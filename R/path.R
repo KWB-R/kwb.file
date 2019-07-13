@@ -81,13 +81,12 @@ split_paths <- function(paths, dbg = TRUE)
 remove_common_root <- function(x, n_keep = 0, dbg = TRUE)
 {
   if (! (was_list <- is.list(x))) {
-    
     x <- split_paths(as.character(x), dbg = dbg)
   }
   
   root <- ""
   
-  n_common <- get_common_start_segments(x)
+  n_common <- get_number_of_common_start_segments(x)
   
   if ((n_remove <- n_common - n_keep) > 0) {
     
@@ -98,9 +97,7 @@ remove_common_root <- function(x, n_keep = 0, dbg = TRUE)
     text <- paste("Removing the first", n_remove, "path segments")
     
     kwb.utils::catAndRun(text, dbg = dbg, {
-      
       x <- lapply(x, function(segments) {
-        
         if (length(segments) > n_remove) segments[- (1:n_remove)] else ""
       })
     })
@@ -108,10 +105,8 @@ remove_common_root <- function(x, n_keep = 0, dbg = TRUE)
   
   # If the input was not a list, convert the list back to a vector of character
   if (! was_list) {
-    
-    kwb.utils::catAndRun("Putting path segments together", dbg = dbg, {
-      
-      x <- sapply(x, function(xx) do.call(paste, c(as.list(xx), sep = "/")))
+    x <- kwb.utils::catAndRun("Putting path segments together", dbg = dbg, {
+      sapply(x, function(xx) do.call(paste, c(as.list(xx), sep = "/")))
     })
   }
   
@@ -119,8 +114,8 @@ remove_common_root <- function(x, n_keep = 0, dbg = TRUE)
   structure(x, root = root)
 }
 
-# get_common_start_segments ----------------------------------------------------
-get_common_start_segments <- function(list_of_segments)
+# get_number_of_common_start_segments ------------------------------------------
+get_number_of_common_start_segments <- function(list_of_segments)
 {
   # Define helper function
   get_segment <- function(depth) {
@@ -129,9 +124,9 @@ get_common_start_segments <- function(list_of_segments)
     result[is.na(result)] <- ""
     result
   }
-  
+
   tree_height <- get_max_path_depth(parts = list_of_segments)
-  
+
   i <- 1
   
   while (i < tree_height && kwb.utils::allAreEqual(get_segment(i))) {
