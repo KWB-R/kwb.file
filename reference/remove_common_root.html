@@ -115,7 +115,7 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Remove the Common Root Parts</h1>
-    <small class="dont-index">Source: <a href='https://github.com/KWB-R/kwb.file/blob/master/R/path.R'><code>R/path.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/KWB-R/kwb.file/blob/master/R/remove_common_root.R'><code>R/remove_common_root.R</code></a></small>
     <div class="hidden name"><code>remove_common_root.Rd</code></div>
     </div>
 
@@ -125,7 +125,7 @@
     
     </div>
 
-    <pre class="usage"><span class='fu'>remove_common_root</span>(<span class='no'>x</span>, <span class='kw'>n_keep</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>dbg</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
+    <pre class="usage"><span class='fu'>remove_common_root</span>(<span class='no'>x</span>, <span class='kw'>n_keep</span> <span class='kw'>=</span> <span class='fl'>1L</span>, <span class='kw'>dbg</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -137,8 +137,12 @@
     </tr>
     <tr>
       <th>n_keep</th>
-      <td><p>number of common path segments to keep (so that the path
-tree keeps its root)</p></td>
+      <td><p>minimum number of segments to be kept in any case in the 
+returned relative paths. For example, two paths "a" and "a/b" have the 
+common root "a". Removing this root would result in relative paths 
+"" and "b". As this is not useful, <code>n_keep</code> is <code>1</code> by default,
+making sure that all paths keep at least one segment (segment "a") in the
+example.</p></td>
     </tr>
     <tr>
       <th>dbg</th>
