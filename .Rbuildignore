@@ -2,7 +2,7 @@
 ^docs$
 ^_pkgdown\.yml$
 ^LICENSE\.md$
-^kwb\.Rproj$
+^kwb\.file\.Rproj$
 ^\.Rproj\.user$
 ^.gitlab-ci\.yml$
 ^.travis\.yml$
