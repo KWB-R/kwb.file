@@ -9,16 +9,12 @@ write_file_info_to_yaml_file <- function(source_paths, target_files, target_dir)
 # file_paths_to_file_info ------------------------------------------------------
 file_paths_to_file_info <- function(file_paths, target_files)
 {
-  path_parts <- split_paths(file_paths)
-  
-  path_parts <- remove_common_root(path_parts, n_keep = 1)
-  
-  directory_path <- function(x) do.call(file.path, as.list(x[-length(x)]))
-  
+  relative_paths <- remove_common_root(file_paths, n_keep = 2)
+                     
   kwb.utils::noFactorDataFrame(
     file_id = target_files,
-    original_name = sapply(path_parts, kwb.utils::lastElement),
-    original_folder = sapply(path_parts, directory_path)
+    original_name = basename(relative_paths),
+    original_folder = dirname(relative_paths)
   )
 }
 
