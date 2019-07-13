@@ -4,8 +4,12 @@
 #'
 #' @param x list of vectors of character as returned by
 #'   \code{\link[base]{strsplit}} or a vector of character.
-#' @param n_keep number of common path segments to keep (so that the path
-#'   tree keeps its root)
+#' @param n_keep minimum number of segments to be kept in any case in the 
+#'   returned relative paths. For example, two paths "a" and "a/b" have the 
+#'   common root "a". Removing this root would result in relative paths 
+#'   "" and "b". As this is not useful, \code{n_keep} is \code{1} by default,
+#'   making sure that all paths keep at least one segment (segment "a") in the
+#'   example. 
 #' @param dbg if \code{TRUE} debug messages are shown
 #'
 #' @export
@@ -20,7 +24,7 @@
 #' # The extracted root is returned in attribute "root"
 #' attr(relparts, "root")
 #'
-remove_common_root <- function(x, n_keep = 0, dbg = TRUE)
+remove_common_root <- function(x, n_keep = 1L, dbg = TRUE)
 {
   if (! (was_list <- is.list(x))) {
     x <- split_paths(as.character(x), dbg = dbg)
@@ -30,9 +34,15 @@ remove_common_root <- function(x, n_keep = 0, dbg = TRUE)
   max_i <- max(lengths(x))
   
   while (i <= max_i && kwb.utils::allAreEqual(sapply(x, "[", i))) i <- i + 1
+
+  n_common <- i - 1
+
+  # Max. possible number of segments to remove: min. path depth - n_keep
+  n_remove_max <- min(lengths(x)) - n_keep
   
-  n_remove <- i - 1 - n_keep
-  
+  # Remove the smaller of "n_common" and "n_remove_max" number of segements
+  n_remove <- min(n_common, n_remove_max)
+
   if (n_remove > 0) {
     
     kwb.utils::catAndRun(

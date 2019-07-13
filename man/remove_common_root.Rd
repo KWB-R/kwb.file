@@ -4,14 +4,18 @@
 \alias{remove_common_root}
 \title{Remove the Common Root Parts}
 \usage{
-remove_common_root(x, n_keep = 0, dbg = TRUE)
+remove_common_root(x, n_keep = 1L, dbg = TRUE)
 }
 \arguments{
 \item{x}{list of vectors of character as returned by
 \code{\link[base]{strsplit}} or a vector of character.}
 
-\item{n_keep}{number of common path segments to keep (so that the path
-tree keeps its root)}
+\item{n_keep}{minimum number of segments to be kept in any case in the 
+returned relative paths. For example, two paths "a" and "a/b" have the 
+common root "a". Removing this root would result in relative paths 
+"" and "b". As this is not useful, \code{n_keep} is \code{1} by default,
+making sure that all paths keep at least one segment (segment "a") in the
+example.}
 
 \item{dbg}{if \code{TRUE} debug messages are shown}
 }
