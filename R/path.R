@@ -142,15 +142,8 @@ get_common_start_segments <- function(list_of_segments)
   i - 1
 }
 
-# get_max_path_depth ---------------------------------------------------------------------
+# get_max_path_depth -----------------------------------------------------------
 get_max_path_depth <- function(parts = split_paths(paths), paths = NULL)
 {
-  if (length(parts) == 0) {
-    
-    0L
-    
-  } else {
-    
-    max(kwb.utils::getElementLengths(parts))
-  }
+  ifelse(length(parts) == 0, 0L, max(lengths(parts)))
 }
