@@ -1,3 +1,5 @@
+* split_paths(): add argument "use_fs"
+
 # 2019-07: v0.2.0
 
 * split_paths() now recognises server paths and keeps "//server" as one part

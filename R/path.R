@@ -26,13 +26,19 @@ split_into_dir_and_file <- function(paths)
 #' 
 #' @param paths vector of character representing full file paths
 #' @param dbg if \code{TRUE} (default), a debug message is shown
+#' @param use_fs whether or not to simply use \code{\link[fs]{path_split}}. 
+#'   Defaults to \code{FALSE}
 #' @importFrom kwb.utils catAndRun
 #' @export
 #' @examples
 #' segments <- split_paths(c("path/to/file-1", "path/to/file-2"))
 #' segments
-split_paths <- function(paths, dbg = TRUE)
+split_paths <- function(paths, dbg = TRUE, use_fs = FALSE)
 {
+  if (use_fs) {
+    return(fs::path_split(paths))
+  }
+  
   # Which paths start with "//server"?
   server_indices <- grep("^//[^/]", paths)
   

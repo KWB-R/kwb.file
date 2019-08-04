@@ -4,12 +4,15 @@
 \alias{split_paths}
 \title{Split Full Paths at Slashes into Parts}
 \usage{
-split_paths(paths, dbg = TRUE)
+split_paths(paths, dbg = TRUE, use_fs = FALSE)
 }
 \arguments{
 \item{paths}{vector of character representing full file paths}
 
 \item{dbg}{if \code{TRUE} (default), a debug message is shown}
+
+\item{use_fs}{whether or not to simply use \code{\link[fs]{path_split}}. 
+Defaults to \code{FALSE}}
 }
 \description{
 Split Full Paths at Slashes into Parts
