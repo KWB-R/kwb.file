@@ -1,6 +1,6 @@
 Package: kwb.file
 Title: Functions Related to File and Path Operations
-Version: 0.2.1
+Version: 0.2.1.9000
 Authors@R: 
     c(person(given = "Hauke",
              family = "Sonnenberg",
