@@ -28,7 +28,8 @@ split_into_dir_and_file <- function(paths)
 #' @param dbg if \code{TRUE} (default), a debug message is shown
 #' @param use_fs whether or not to simply use \code{\link[fs]{path_split}}. 
 #'   Defaults to \code{FALSE}
-#' @importFrom kwb.utils catAndRun
+#' @importFrom kwb.utils catAndRun 
+#' @importFrom fs path_split
 #' @export
 #' @examples
 #' segments <- split_paths(c("path/to/file-1", "path/to/file-2"))

@@ -1,6 +1,6 @@
 Package: kwb.file
 Title: Functions Related to File and Path Operations
-Version: 0.2.0
+Version: 0.2.0.9000
 Authors@R: 
     c(person(given = "Hauke",
              family = "Sonnenberg",
@@ -26,6 +26,7 @@ RoxygenNote: 6.1.1
 Imports: 
     digest,
     dplyr,
+    fs,
     kwb.utils,
     yaml
 Remotes: 
