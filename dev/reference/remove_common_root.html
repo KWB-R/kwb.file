@@ -8,10 +8,12 @@
 
 <title>Remove the Common Root Parts — remove_common_root • kwb.file</title>
 
+
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/cerulean/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
+
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
 
@@ -29,11 +31,18 @@
 <script src="../pkgdown.js"></script>
 
 
+<!-- docsearch -->
+<script src="../docsearch.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/docsearch.js/2.6.1/docsearch.min.css" integrity="sha256-QOSRU/ra9ActyXkIBbiIB144aDBdtvXBcNc3OTNuX/Q=" crossorigin="anonymous" />
+<link href="../docsearch.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+
+
 
 <meta property="og:title" content="Remove the Common Root Parts — remove_common_root" />
-
 <meta property="og:description" content="Remove the Common Root Parts" />
 <meta name="twitter:card" content="summary" />
+
 
 <meta name="robots" content="noindex">
 
@@ -63,7 +72,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">kwb.file</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">0.1.0.9000</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">0.2.0.9000</span>
       </span>
     </div>
 
@@ -82,7 +91,6 @@
   <a href="../news/index.html">Changelog</a>
 </li>
       </ul>
-      
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/KWB-R/kwb.file">
@@ -91,6 +99,12 @@
   </a>
 </li>
       </ul>
+      
+      <form class="navbar-form navbar-right" role="search">
+        <div class="form-group">
+          <input type="search" class="form-control" name="search-input" id="search-input" placeholder="Search..." aria-label="Search for..." autocomplete="off">
+        </div>
+      </form>
       
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
@@ -103,18 +117,16 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Remove the Common Root Parts</h1>
-    <small class="dont-index">Source: <a href='https://github.com/KWB-R/kwb.file/blob/master/R/path.R'><code>R/path.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/KWB-R/kwb.file/blob/master/R/remove_common_root.R'><code>R/remove_common_root.R</code></a></small>
     <div class="hidden name"><code>remove_common_root.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    
     <p>Remove the Common Root Parts</p>
-    
     </div>
 
-    <pre class="usage"><span class='fu'>remove_common_root</span>(<span class='no'>x</span>, <span class='kw'>n_keep</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>dbg</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
-    
+    <pre class="usage"><span class='fu'>remove_common_root</span>(<span class='no'>x</span>, <span class='kw'>n_keep</span> <span class='kw'>=</span> <span class='fl'>1L</span>, <span class='kw'>dbg</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
+
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
@@ -125,22 +137,26 @@
     </tr>
     <tr>
       <th>n_keep</th>
-      <td><p>number of common path segments to keep (so that the path
-tree keeps its root)</p></td>
+      <td><p>minimum number of segments to be kept in any case in the 
+returned relative paths. For example, two paths "a" and "a/b" have the 
+common root "a". Removing this root would result in relative paths 
+"" and "b". As this is not useful, <code>n_keep</code> is <code>1</code> by default,
+making sure that all paths keep at least one segment (segment "a") in the
+example.</p></td>
     </tr>
     <tr>
       <th>dbg</th>
       <td><p>if <code>TRUE</code> debug messages are shown</p></td>
     </tr>
     </table>
-    
+
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># Split paths at the slashes</span>
 <span class='no'>absparts</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/strsplit'>strsplit</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"a/b/c"</span>, <span class='st'>"a/b/d"</span>, <span class='st'>"a/b/e/f/g"</span>, <span class='st'>"a/b/hi"</span>), <span class='st'>"/"</span>)
 
 <span class='co'># Remove the common parts of the paths</span>
-<span class='no'>relparts</span> <span class='kw'>&lt;-</span> <span class='fu'>remove_common_root</span>(<span class='no'>absparts</span>)</div><div class='output co'>#&gt; Removing the first 2 path segments ... ok. </div><div class='input'><span class='no'>relparts</span></div><div class='output co'>#&gt; [[1]]
+<span class='no'>relparts</span> <span class='kw'>&lt;-</span> <span class='fu'>remove_common_root</span>(<span class='no'>absparts</span>)</div><div class='output co'>#&gt; Removing the first 2 path segments ... ok. (0.00s) </div><div class='input'><span class='no'>relparts</span></div><div class='output co'>#&gt; [[1]]
 #&gt; [1] "c"
 #&gt; 
 #&gt; [[2]]
@@ -162,7 +178,6 @@ tree keeps its root)</p></td>
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-            
       <li><a href="#examples">Examples</a></li>
     </ul>
 
@@ -181,6 +196,23 @@ tree keeps its root)</p></td>
    </div>
 
   
+<script src="https://cdnjs.cloudflare.com/ajax/libs/docsearch.js/2.6.1/docsearch.min.js" integrity="sha256-GKvGqXDznoRYHCwKXGnuchvKSwmx9SRMrZOTh2g4Sb0=" crossorigin="anonymous"></script>
+<script>
+  docsearch({
+    
+    
+    apiKey: '7ae9c976bf355a3f9c32bd4db95a69c7',
+    indexName: 'kwb_file',
+    inputSelector: 'input#search-input.form-control',
+    transformData: function(hits) {
+      return hits.map(function (hit) {
+        hit.url = updateHitURL(hit);
+        return hit;
+      });
+    }
+  });
+</script>
+
 
   </body>
 </html>
