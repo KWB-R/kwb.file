@@ -1,4 +1,4 @@
-[![Appveyor build Status](https://ci.appveyor.com/api/projects/status/github/KWB-R/kwb.file?branch=master&svg=true)](https://ci.appveyor.com/project/KWB-R/kwb-file/branch/master)
+[![Appveyor build Status](https://ci.appveyor.com/api/projects/status/hkc1h6tubwvdbb8s/branch/master?svg=true)](https://ci.appveyor.com/project/KWB-R/kwb-file/branch/master)
 [![Travis build Status](https://travis-ci.org/KWB-R/kwb.file.svg?branch=master)](https://travis-ci.org/KWB-R/kwb.file)
 [![codecov](https://codecov.io/github/KWB-R/kwb.file/branch/master/graphs/badge.svg)](https://codecov.io/github/KWB-R/kwb.file)
 [![Project Status](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
@@ -12,7 +12,7 @@ packages and better fits here...
 
 ## Installation
 
-```{r echo = TRUE, eval = FALSE}
+```r
 #install.packages("remotes", repos = "https://cloud.r-project.org")
 remotes::install_github("KWB-R/kwb.file")
 ```
