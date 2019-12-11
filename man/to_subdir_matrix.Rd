@@ -12,8 +12,9 @@ to_subdir_matrix(paths, fill.value = "", result_type = "matrix",
 
 \item{fill.value}{value used to fill empty cells of the result matrix}
 
-\item{result_type}{one of \code{c("matrix", "data.frame")}, specifying the
-type of object to be returned}
+\item{result_type}{one of \code{c("matrix", "data.frame", "list")}, 
+specifying the type of object to be returned. Result type "list" is only
+implemented for \code{method} 2 or 3.}
 
 \item{dbg}{if \code{TRUE} debug messages are shown}
 
