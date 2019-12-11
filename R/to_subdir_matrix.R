@@ -6,9 +6,9 @@
 #' @param fill.value value used to fill empty cells of the result matrix
 #' @param result_type one of \code{c("matrix", "data.frame", "list")}, 
 #'   specifying the type of object to be returned. Result type "list" is only
-#'   implemented for \code{method} 2 or 3.
+#'   implemented for \code{method = 2}.
 #' @param dbg if \code{TRUE} debug messages are shown
-#' @param method integer specifying the implementation method. One of 1, 2, 3.
+#' @param method integer specifying the implementation method. One of 1, 2.
 #' @return matrix or data frame, depending on \code{result_type}
 #' 
 #' @importFrom kwb.utils asNoFactorDataFrame enlargeVector
@@ -25,14 +25,14 @@
 #' folder_matrix[folder_matrix[, 1] == "a1", ]
 #'
 to_subdir_matrix <- function(
-  paths, fill.value = "", result_type = "matrix", dbg = FALSE, method = 3
+  paths, fill.value = "", result_type = "matrix", dbg = FALSE, method = 2
 )
 {
   stopifnot(result_type %in% c("matrix", "data.frame", "list"))
-  stopifnot(result_type != "list" || method %in% 2:3)
+  stopifnot(result_type != "list" || method == 2)
+  stopifnot(method %in% 1:2)
   
   if (! is.list(paths)) {
-
     paths <- split_paths(paths, dbg = dbg)
   }
 
@@ -44,8 +44,6 @@ to_subdir_matrix <- function(
     )
   }
 
-  stopifnot(method %in% 1:3)
-  
   if (method == 1) {
 
     # Get the maximum path depth
@@ -57,65 +55,41 @@ to_subdir_matrix <- function(
     # Create a matrix of subdirectories
     result <- matrix(unlist(paths), nrow = length(paths), byrow = TRUE)
     
-  } else {
+  } else if (method == 2) {
     
     path_depths <- lengths(paths)
     
     max_depth <- max(path_depths)
-    
-    if (method == 2) {
-      
-      subdirs_in_depth <- lapply(split(paths, path_depths), function(x) {
-        depth <- length(x[[1]])
-        m <- matrix(unlist(x), byrow = TRUE, ncol = depth)
-        if (result_type == "list") {
-          return(m)
-        }
-        n_fill <- (max_depth - depth) * length(x)
-        matrix(c(m, rep_len(fill.value, n_fill)), ncol = max_depth)
-      })
-      
-    } else if (method == 3) {
-      
-      index_list <- split(seq_along(paths), path_depths)
-      
-      subdirs_in_depth <- lapply(index_list, function(indices) {
-        depth <- path_depths[indices[1]]
-        m <- matrix(unlist(paths[indices]), byrow = TRUE, ncol = depth)
-        if (result_type == "list") {
-          return(m)
-        }
-        cbind(m, matrix(
-          fill.value, ncol = (max_depth - depth), nrow = length(indices)
-        ))
-      })
-    }
 
+    original_rows <- split(seq_along(paths), path_depths)
+    
+    subdirs_in_depth <- lapply(original_rows, function(indices) {
+      depth <- path_depths[indices[1]]
+      m <- matrix(unlist(paths[indices]), byrow = TRUE, ncol = depth)
+      if (result_type == "list") {
+        return(m)
+      }
+      cbind(m, matrix(
+        fill.value, ncol = (max_depth - depth), nrow = length(indices)
+      ))
+    })
+    
     # Return the list of matrices if requested
     if (result_type == "list") {
-      return(subdirs_in_depth)
+      return(structure(subdirs_in_depth, original_rows = original_rows))
     }
     
     subdirs <- do.call(rbind, subdirs_in_depth)
 
-    if (method == 2) {
-      index_list <- split(seq_along(paths), path_depths)
-    } 
-    
-    result <- subdirs[order(unlist(index_list)), ]
+    result <- subdirs[order(unlist(original_rows)), ]
   }
 
   # Return the result as an object of the requested type
   if (result_type == "matrix") {
-
-    result
-
-  } else if (result_type == "data.frame") {
-
-    kwb.utils::asNoFactorDataFrame(result)
-
-  } else {
-
-    stop("result_type not supported: ", result_type, call. = FALSE)
+    return(result)
+  } 
+  
+  if (result_type == "data.frame") {
+    return(kwb.utils::asNoFactorDataFrame(result))
   }
 }

@@ -5,7 +5,7 @@
 \title{Convert a Vector of Paths to a Matrix of Subfolders}
 \usage{
 to_subdir_matrix(paths, fill.value = "", result_type = "matrix",
-  dbg = FALSE, method = 3)
+  dbg = FALSE, method = 2)
 }
 \arguments{
 \item{paths}{vector of path strings}
@@ -14,11 +14,11 @@ to_subdir_matrix(paths, fill.value = "", result_type = "matrix",
 
 \item{result_type}{one of \code{c("matrix", "data.frame", "list")}, 
 specifying the type of object to be returned. Result type "list" is only
-implemented for \code{method} 2 or 3.}
+implemented for \code{method = 2}.}
 
 \item{dbg}{if \code{TRUE} debug messages are shown}
 
-\item{method}{integer specifying the implementation method. One of 1, 2, 3.}
+\item{method}{integer specifying the implementation method. One of 1, 2.}
 }
 \value{
 matrix or data frame, depending on \code{result_type}
