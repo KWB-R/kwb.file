@@ -66,10 +66,7 @@ to_subdir_matrix <- function(
     subdirs_in_depth <- lapply(original_rows, function(indices) {
       depth <- path_depths[indices[1]]
       m <- matrix(unlist(paths[indices]), byrow = TRUE, ncol = depth)
-      if (result_type == "list") {
-        return(m)
-      }
-      cbind(m, matrix(
+      if (result_type == "list") m else cbind(m,  matrix(
         fill.value, ncol = (max_depth - depth), nrow = length(indices)
       ))
     })
