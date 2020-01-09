@@ -5,17 +5,21 @@
 \title{Convert a Vector of Paths to a Matrix of Subfolders}
 \usage{
 to_subdir_matrix(paths, fill.value = "", result_type = "matrix",
-  dbg = FALSE)
+  dbg = FALSE, method = NA_integer_)
 }
 \arguments{
 \item{paths}{vector of path strings}
 
 \item{fill.value}{value used to fill empty cells of the result matrix}
 
-\item{result_type}{one of \code{c("matrix", "data.frame")}, specifying the
-type of object to be returned}
+\item{result_type}{one of \code{c("matrix", "data.frame", "list")}, 
+specifying the type of object to be returned. Result type "list" is only
+implemented for \code{method = 2}.}
 
 \item{dbg}{if \code{TRUE} debug messages are shown}
+
+\item{method}{integer specifying the implementation method. Currently not
+used.}
 }
 \value{
 matrix or data frame, depending on \code{result_type}
