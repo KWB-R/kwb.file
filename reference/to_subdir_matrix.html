@@ -75,7 +75,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">kwb.file</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.0</span>
       </span>
     </div>
 
@@ -130,7 +130,7 @@
     </div>
 
     <pre class="usage"><span class='fu'>to_subdir_matrix</span>(<span class='no'>paths</span>, <span class='kw'>fill.value</span> <span class='kw'>=</span> <span class='st'>""</span>, <span class='kw'>result_type</span> <span class='kw'>=</span> <span class='st'>"matrix"</span>,
-  <span class='kw'>dbg</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+  <span class='kw'>dbg</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>method</span> <span class='kw'>=</span> <span class='fl'>NA_integer_</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -145,12 +145,18 @@
     </tr>
     <tr>
       <th>result_type</th>
-      <td><p>one of <code><a href='https://rdrr.io/r/base/c.html'>c("matrix", "data.frame")</a></code>, specifying the
-type of object to be returned</p></td>
+      <td><p>one of <code><a href='https://rdrr.io/r/base/c.html'>c("matrix", "data.frame", "list")</a></code>, 
+specifying the type of object to be returned. Result type "list" is only
+implemented for <code>method = 2</code>.</p></td>
     </tr>
     <tr>
       <th>dbg</th>
       <td><p>if <code>TRUE</code> debug messages are shown</p></td>
+    </tr>
+    <tr>
+      <th>method</th>
+      <td><p>integer specifying the implementation method. Currently not
+used.</p></td>
     </tr>
     </table>
 
@@ -189,7 +195,7 @@ type of object to be returned</p></td>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
 </div>
 
       </footer>
