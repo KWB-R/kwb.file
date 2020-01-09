@@ -76,7 +76,7 @@ and paths of the files that could not be copied." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">kwb.file</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">0.2.1.9000</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">0.3.0.9000</span>
       </span>
     </div>
 
@@ -170,7 +170,7 @@ and paths of the files that could not be copied.</p>
 #&gt; [19] "NEWS.md"                 "R/kwb.file"             
 #&gt; [21] "R/kwb.file.rdb"          "R/kwb.file.rdx"         </div><div class='input'>
 <span class='co'># Create a temporary target folder</span>
-<span class='no'>target_dir</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>kwb.utils</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/kwb.utils/man/createDirectory.html'>createDirectory</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/file.path.html'>file.path</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/tempfile.html'>tempdir</a></span>(), <span class='st'>"target"</span>))</div><div class='output co'>#&gt; The directory "/tmp/RtmpnAtlbK/target" was created.</div><div class='input'>
+<span class='no'>target_dir</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>kwb.utils</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/kwb.utils/man/createDirectory.html'>createDirectory</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/file.path.html'>file.path</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/tempfile.html'>tempdir</a></span>(), <span class='st'>"target"</span>))</div><div class='output co'>#&gt; The directory "/tmp/Rtmpf1mGZa/target" was created.</div><div class='input'>
 <span class='co'># Copy all files into one target folder without subfolders</span>
 <span class='no'>from_paths</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/file.path.html'>file.path</a></span>(<span class='no'>root</span>, <span class='no'>relative_paths</span>)
 <span class='no'>to_paths</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/basename.html'>basename</a></span>(<span class='no'>from_paths</span>)
