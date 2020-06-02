@@ -1,3 +1,7 @@
+# [kwb.file v0.3.1](https://github.com/KWB-R/kwb.file/releases/tag/v0.3.1) <small>2020-06-02</small>
+
+* Update dependency on kwb.utils (now v0.6.0)
+
 # [kwb.file v0.3.0](https://github.com/KWB-R/kwb.file/releases/tag/v0.3.0) <small>2020-01-10</small>
 
 * split_paths(): add argument "use_fs"
