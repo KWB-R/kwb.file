@@ -4,8 +4,11 @@
 \alias{read_file_metadata}
 \title{Read File Metadata from YAML-File}
 \usage{
-read_file_metadata(yaml_file, file_encoding = "UTF-8",
-  out_class = c("data.frame", "list")[1])
+read_file_metadata(
+  yaml_file,
+  file_encoding = "UTF-8",
+  out_class = c("data.frame", "list")[1]
+)
 }
 \arguments{
 \item{yaml_file}{path to YAML-File containing file metadata (as saved with
