@@ -86,7 +86,7 @@
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -100,7 +100,7 @@
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/KWB-R/kwb.file/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -132,7 +132,7 @@
     <p>Add File Information From File Database</p>
     </div>
 
-    <pre class="usage"><span class='fu'>add_file_info</span>(<span class='no'>data</span>)</pre>
+    <pre class="usage"><span class='fu'>add_file_info</span><span class='op'>(</span><span class='va'>data</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -152,29 +152,31 @@ created by <code>to_file_database</code></p></td>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># Define some paths</span>
-<span class='no'>paths</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(
+<span class='va'>paths</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span>
   <span class='st'>"/very/long/path/very_long_file_name_1"</span>,
   <span class='st'>"/very/long/path/very_long_file_name_2"</span>,
   <span class='st'>"/very/long/path/very_long_file_name_3"</span>
-)
+<span class='op'>)</span>
 
 <span class='co'># Create a "file database" from the paths</span>
-<span class='no'>file_db</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>kwb.file</span><span class='kw ns'>::</span><span class='fu'><a href='to_file_database.html'>to_file_database</a></span>(<span class='no'>paths</span>, <span class='kw'>remove_common_base</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+<span class='va'>file_db</span> <span class='op'>&lt;-</span> <span class='fu'>kwb.file</span><span class='fu'>::</span><span class='fu'><a href='to_file_database.html'>to_file_database</a></span><span class='op'>(</span><span class='va'>paths</span>, remove_common_base <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
 
 <span class='co'># Create a data frame that relates some information to the files.</span>
 <span class='co'># Use the file identifier instead of the full name to keep the data clean</span>
-(<span class='no'>df</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>kwb.utils</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/kwb.utils/man/noFactorDataFrame.html'>noFactorDataFrame</a></span>(
-  <span class='kw'>file_id</span> <span class='kw'>=</span> <span class='no'>file_db</span>$<span class='no'>files</span>$<span class='no'>file_id</span>,
-  <span class='kw'>value</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq_along</a></span>(<span class='no'>paths</span>)
-))</div><div class='output co'>#&gt;   file_id value
+<span class='op'>(</span><span class='va'>df</span> <span class='op'>&lt;-</span> <span class='fu'>kwb.utils</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/kwb.utils/man/noFactorDataFrame.html'>noFactorDataFrame</a></span><span class='op'>(</span>
+  file_id <span class='op'>=</span> <span class='va'>file_db</span><span class='op'>$</span><span class='va'>files</span><span class='op'>$</span><span class='va'>file_id</span>, 
+  value <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq_along</a></span><span class='op'>(</span><span class='va'>paths</span><span class='op'>)</span>
+<span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt;   file_id value
 #&gt; 1 file_01     1
 #&gt; 2 file_02     2
 #&gt; 3 file_03     3</div><div class='input'>
 <span class='co'># Store the file database in the attribute "file_db"</span>
-<span class='no'>df</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/structure.html'>structure</a></span>(<span class='no'>df</span>, <span class='kw'>file_db</span> <span class='kw'>=</span> <span class='no'>file_db</span>)
+<span class='va'>df</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/structure.html'>structure</a></span><span class='op'>(</span><span class='va'>df</span>, file_db <span class='op'>=</span> <span class='va'>file_db</span><span class='op'>)</span>
 
 <span class='co'># Restore the full file paths</span>
-<span class='fu'>add_file_info</span>(<span class='no'>df</span>)</div><div class='output co'>#&gt;   file_id     folder_path             file_name value
+<span class='fu'>add_file_info</span><span class='op'>(</span><span class='va'>df</span><span class='op'>)</span>
+</div><div class='output co'>#&gt;   file_id     folder_path             file_name value
 #&gt; 1 file_01 /very/long/path very_long_file_name_1     1
 #&gt; 2 file_02 /very/long/path very_long_file_name_2     2
 #&gt; 3 file_03 /very/long/path very_long_file_name_3     3</div><div class='input'>
@@ -194,7 +196,7 @@ created by <code>to_file_database</code></p></td>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

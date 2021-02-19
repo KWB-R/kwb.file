@@ -86,7 +86,7 @@
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -100,7 +100,7 @@
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/KWB-R/kwb.file/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -132,7 +132,7 @@
     <p>Remove the Common Root Parts</p>
     </div>
 
-    <pre class="usage"><span class='fu'>remove_common_root</span>(<span class='no'>x</span>, <span class='kw'>n_keep</span> <span class='kw'>=</span> <span class='fl'>1L</span>, <span class='kw'>dbg</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
+    <pre class="usage"><span class='fu'>remove_common_root</span><span class='op'>(</span><span class='va'>x</span>, n_keep <span class='op'>=</span> <span class='fl'>1L</span>, dbg <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -160,10 +160,12 @@ example.</p></td>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># Split paths at the slashes</span>
-<span class='no'>absparts</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/strsplit.html'>strsplit</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"a/b/c"</span>, <span class='st'>"a/b/d"</span>, <span class='st'>"a/b/e/f/g"</span>, <span class='st'>"a/b/hi"</span>), <span class='st'>"/"</span>)
+<span class='va'>absparts</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/strsplit.html'>strsplit</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"a/b/c"</span>, <span class='st'>"a/b/d"</span>, <span class='st'>"a/b/e/f/g"</span>, <span class='st'>"a/b/hi"</span><span class='op'>)</span>, <span class='st'>"/"</span><span class='op'>)</span>
 
 <span class='co'># Remove the common parts of the paths</span>
-<span class='no'>relparts</span> <span class='kw'>&lt;-</span> <span class='fu'>remove_common_root</span>(<span class='no'>absparts</span>)</div><div class='output co'>#&gt; Removing the first 2 path segments ... ok. (0.00s) </div><div class='input'><span class='no'>relparts</span></div><div class='output co'>#&gt; [[1]]
+<span class='va'>relparts</span> <span class='op'>&lt;-</span> <span class='fu'>remove_common_root</span><span class='op'>(</span><span class='va'>absparts</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; Removing the first 2 path segments ... ok. (0.00s) </div><div class='input'><span class='va'>relparts</span>
+</div><div class='output co'>#&gt; [[1]]
 #&gt; [1] "c"
 #&gt; 
 #&gt; [[2]]
@@ -178,7 +180,8 @@ example.</p></td>
 #&gt; attr(,"root")
 #&gt; [1] "a/b"</div><div class='input'>
 <span class='co'># The extracted root is returned in attribute "root"</span>
-<span class='fu'><a href='https://rdrr.io/r/base/attr.html'>attr</a></span>(<span class='no'>relparts</span>, <span class='st'>"root"</span>)</div><div class='output co'>#&gt; [1] "a/b"</div><div class='input'>
+<span class='fu'><a href='https://rdrr.io/r/base/attr.html'>attr</a></span><span class='op'>(</span><span class='va'>relparts</span>, <span class='st'>"root"</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] "a/b"</div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
@@ -195,7 +198,7 @@ example.</p></td>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

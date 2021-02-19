@@ -89,7 +89,7 @@ that are returned." />
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -103,7 +103,7 @@ that are returned." />
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/KWB-R/kwb.file/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -138,7 +138,7 @@ original paths are stored in two data frames, <code>files</code> and <code>folde
 that are returned.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>to_file_database</span>(<span class='no'>files</span>, <span class='kw'>remove_common_base</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
+    <pre class="usage"><span class='fu'>to_file_database</span><span class='op'>(</span><span class='va'>files</span>, remove_common_base <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -159,12 +159,13 @@ that are returned.</p>
     <p>list of two data frames, <code>files</code> and <code>folders</code></p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>paths</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(
+    <pre class="examples"><div class='input'><span class='va'>paths</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span>
   <span class='st'>"very_long/very_ugly_path/even with spaces.doc"</span>,
   <span class='st'>"very_long/very_ugly_path/even with spaces.docx"</span>
-)
+<span class='op'>)</span>
 
-<span class='fu'>to_file_database</span>(<span class='no'>paths</span>)</div><div class='output co'>#&gt; Splitting paths ... ok. (0.00s) 
+<span class='fu'>to_file_database</span><span class='op'>(</span><span class='va'>paths</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; Splitting paths ... ok. (0.00s) 
 #&gt; Removing the first 1 path segments ... ok. (0.00s) </div><div class='output co'>#&gt; $files
 #&gt;   file_id             file_name folder_id
 #&gt; 1 file_01  even with spaces.doc folder_01
@@ -173,7 +174,8 @@ that are returned.</p>
 #&gt; $folders
 #&gt;   folder_id    folder_path
 #&gt; 1 folder_01 very_ugly_path
-#&gt; </div><div class='input'><span class='fu'>to_file_database</span>(<span class='no'>paths</span>, <span class='kw'>remove_common_base</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</div><div class='output co'>#&gt; $files
+#&gt; </div><div class='input'><span class='fu'>to_file_database</span><span class='op'>(</span><span class='va'>paths</span>, remove_common_base <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; $files
 #&gt;   file_id             file_name folder_id
 #&gt; 1 file_01  even with spaces.doc folder_01
 #&gt; 2 file_02 even with spaces.docx folder_01
@@ -198,7 +200,7 @@ that are returned.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>
