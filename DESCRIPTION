@@ -1,6 +1,6 @@
 Package: kwb.file
 Title: Functions Related to File and Path Operations
-Version: 0.3.1
+Version: 0.3.2
 Authors@R: 
     c(person(given = "Hauke",
              family = "Sonnenberg",
@@ -27,7 +27,7 @@ Suggests:
     covr,
     testthat
 Remotes: 
-    github::kwb-r/kwb.utils@v0.6.0
+    github::kwb-r/kwb.utils
 Encoding: UTF-8
 LazyData: true
-RoxygenNote: 7.1.1
+RoxygenNote: 7.1.2
