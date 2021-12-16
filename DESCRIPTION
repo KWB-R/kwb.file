@@ -1,6 +1,6 @@
 Package: kwb.file
 Title: Functions Related to File and Path Operations
-Version: 0.3.1
+Version: 0.3.2
 Authors@R: 
     c(person(given = "Hauke",
              family = "Sonnenberg",
@@ -17,17 +17,17 @@ Description: This package provides helper functions that
 License: MIT + file LICENSE
 URL: https://github.com/KWB-R/kwb.file
 BugReports: https://github.com/KWB-R/kwb.file/issues
-Encoding: UTF-8
-LazyData: true
-Suggests: 
-    covr,
-    testthat
-RoxygenNote: 7.1.0
 Imports: 
     digest,
     dplyr,
     fs,
     kwb.utils (>= 0.6.0),
     yaml
+Suggests: 
+    covr,
+    testthat
 Remotes: 
-    github::kwb-r/kwb.utils@v0.6.0
+    github::kwb-r/kwb.utils
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 7.1.2
