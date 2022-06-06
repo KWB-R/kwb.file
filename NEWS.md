@@ -1,3 +1,8 @@
+# [kwb.file v0.3.2](https://github.com/KWB-R/kwb.file/releases/tag/v0.3.2) <small>2020-12-16</small>
+
+* Add badge for [https://kwb-r.r-universe.dev](https://kwb-r.r-universe.dev)
+* Update installation of R package kwb.utils (now latest version on "master" branch)
+
 # [kwb.file v0.3.1](https://github.com/KWB-R/kwb.file/releases/tag/v0.3.1) <small>2020-06-02</small>
 
 * Update dependency on kwb.utils (now v0.6.0)
