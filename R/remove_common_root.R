@@ -45,15 +45,17 @@ remove_common_root <- function(x, n_keep = 1L, dbg = TRUE)
 
   if (n_remove > 0) {
     
+    indices_remove <- seq_len(n_remove)
+    
     kwb.utils::catAndRun(
       sprintf("Removing the first %d path segments", n_remove), dbg = dbg, {
         
         # Determine the root path
-        root <- kwb.utils::collapsed(x[[1]][1:n_remove], "/")
+        root <- kwb.utils::collapsed(x[[1]][indices_remove], "/")
         
         # Remove the first n_common parts of each list entry
         x <- lapply(x, function(xx) {
-          if (length(xx) > n_remove) xx[-(1:n_remove)] else character()
+          if (length(xx) > n_remove) xx[-indices_remove] else character()
         })
       }
     )
